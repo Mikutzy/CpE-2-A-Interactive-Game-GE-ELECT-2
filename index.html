@@ -1,1 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Cost of Being You | The Gender Price Tag</title>
+<style>
+:root{--ink:#171717;--paper:#fffaf4;--pink:#ff6f91;--pink-light:#ffe0e8;--yellow:#f7d66d;--muted:#6f6868;--line:#e8dfe0;--shadow:0 16px 40px rgba(34,20,25,.10);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+button,input,textarea{font:inherit}button{cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #4b8cff;outline-offset:3px}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:18px clamp(18px,5vw,70px);border-bottom:1px solid var(--line);gap:16px}
+.brand{font-size:.85rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase}.brand span{color:#e74770}
+.pill{font-size:.75rem;font-weight:800;border:1px solid var(--ink);border-radius:999px;padding:8px 12px;white-space:nowrap}
+main{max-width:1050px;margin:0 auto;padding:30px 22px 70px}
+.progress-wrap{max-width:720px;margin:0 auto 28px}
+.progress-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:.8rem;font-weight:750;margin-bottom:9px}
+.progress-track{height:7px;background:#f0e5e6;border-radius:999px;overflow:hidden}
+.progress-fill{height:100%;width:0;background:var(--pink);transition:width .3s;border-radius:999px}
+.screen{display:none;animation:rise .3s ease}.screen.active{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.hero{max-width:850px;margin:30px auto 0;text-align:center}
+.eyebrow{display:inline-block;font-size:.76rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase;background:var(--yellow);padding:8px 12px;transform:rotate(-2deg)}
+h1{font-size:clamp(2.8rem,8vw,6.2rem);line-height:.92;letter-spacing:-.075em;margin:25px 0 20px;font-weight:950}h1 .pink{color:#e74770}
+.lead{max-width:620px;margin:0 auto;color:#4f4849;font-size:clamp(1rem,2.4vw,1.18rem);line-height:1.7}
+.hero-art{margin:32px auto;max-width:590px;border:2px solid var(--ink);background:var(--pink-light);border-radius:24px;padding:25px;box-shadow:8px 8px 0 var(--ink);display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap}
+.coin{height:68px;width:68px;border:3px solid var(--ink);border-radius:50%;background:var(--yellow);display:grid;place-items:center;font-weight:950;font-size:1.45rem;box-shadow:3px 3px 0 var(--ink)}
+.equals{font-size:2rem;font-weight:950}
+.btn{border:2px solid var(--ink);background:var(--ink);color:#fff;border-radius:12px;padding:14px 20px;font-weight:850;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 5px 0 rgba(23,23,23,.18)}
+.btn.secondary{background:#fff;color:var(--ink)}.btn.pink{background:var(--pink);color:var(--ink)}
+.btn:disabled{opacity:.35;cursor:not-allowed;transform:none;box-shadow:none}
+.center{text-align:center}
+.panel{max-width:760px;margin:0 auto;background:#fff;border:1.5px solid var(--line);border-radius:24px;padding:clamp(22px,4vw,38px);box-shadow:var(--shadow)}
+.kicker{font-size:.75rem;text-transform:uppercase;letter-spacing:.13em;font-weight:900;color:#e74770}
+h2{font-size:clamp(1.8rem,5vw,3rem);line-height:1.04;letter-spacing:-.05em;margin:10px 0 14px}
+p{line-height:1.65}.muted{color:var(--muted)}.small{font-size:.85rem}
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0}
+.rule{background:#fff6f8;border:1px solid var(--line);padding:15px;border-radius:15px}
+.rule b{display:block;margin-bottom:6px}.rule span{font-size:.88rem;color:#625a5b;line-height:1.45;display:block}
+.card-stage{max-width:720px;margin:0 auto}
+.deck{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:26px 4px 10px}
+.back{aspect-ratio:3/4;border:2px solid var(--ink);border-radius:16px;box-shadow:5px 5px 0 var(--ink);color:var(--ink);font-weight:950;font-size:2.2rem;background:repeating-linear-gradient(45deg,var(--pink-light) 0 10px,#fff 10px 20px);display:grid;place-items:center;transition:transform .15s,box-shadow .15s}
+.back:hover{transform:translate(-2px,-4px) rotate(-2deg);box-shadow:7px 9px 0 var(--ink);background:var(--pink)}
+.scenario-card{position:relative;background:var(--pink-light);border:2px solid var(--ink);border-radius:24px;padding:clamp(24px,5vw,42px);box-shadow:8px 8px 0 var(--ink);min-height:260px}
+.scenario-card:before{content:"SITUATION CARD";position:absolute;right:18px;top:18px;font-size:.65rem;font-weight:900;letter-spacing:.12em}
+.scenario-card h2{margin-top:22px}.story{font-size:1.12rem;line-height:1.75;max-width:590px}
+.tag{display:inline-block;border:1.5px solid var(--ink);border-radius:999px;padding:7px 11px;font-size:.76rem;font-weight:900;text-transform:uppercase;letter-spacing:.05em}
+.discussion{margin:25px 0;background:#fff;border:1px dashed #d5b9c0;border-radius:16px;padding:18px}
+.discussion h3{margin:0 0 7px;font-size:1rem}.discussion p{margin:0 0 4px;color:#51494a}
+.row-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.row-actions .btn{flex:1;min-width:160px}
+.cost-list{display:grid;gap:15px;margin:24px 0}
+.cost-row{display:flex;align-items:center;justify-content:space-between;gap:15px;border:1px solid var(--line);border-radius:16px;padding:16px;background:#fff}
+.cost-row.has{border:2px solid var(--ink);background:#fffdf2;box-shadow:4px 4px 0 var(--yellow)}
+.cost-title{font-weight:900}.cost-title i{font-style:normal;margin-right:6px}
+.cost-description{font-size:.86rem;line-height:1.45;color:var(--muted);margin-top:4px}
+.token-dots{display:flex;gap:5px;flex-wrap:wrap;min-height:24px;align-items:center;margin-top:9px}
+.mini-token{width:19px;height:19px;border:1.5px solid var(--ink);border-radius:50%;background:var(--yellow);display:inline-block}
+.ctl{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.token-btn{height:42px;width:42px;border:1.5px solid var(--ink);border-radius:10px;background:#fff;font-weight:950;font-size:1.2rem}
+.token-btn:hover:not(:disabled){background:var(--pink-light)}.token-btn:disabled{opacity:.3;cursor:not-allowed}
+.count{background:var(--yellow);border:1px solid var(--ink);border-radius:9px;padding:6px 10px;min-width:43px;text-align:center;font-weight:950}
+.total-line{display:flex;align-items:center;justify-content:space-between;background:var(--ink);color:#fff;padding:15px 18px;border-radius:14px;font-weight:850}
+.total-line strong{color:var(--yellow);font-size:1.25rem}
+.solution-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;margin:24px 0}
+.solution-option{display:block;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:18px;min-height:140px;color:var(--ink)}
+.solution-option:hover{border-color:var(--ink)}
+.solution-option.selected{border:2px solid var(--ink);background:var(--pink-light);box-shadow:4px 4px 0 var(--pink)}
+.solution-option .num{font-size:.7rem;letter-spacing:.12em;font-weight:900;color:#e74770}
+.solution-option b{display:block;margin:9px 0 7px;font-size:1.02rem}
+.solution-option span:last-child{display:block;color:#625a5b;font-size:.88rem;line-height:1.45}
+.field-label{display:block;font-weight:850;margin:18px 0 8px}
+textarea,input[type=text]{width:100%;border:1.5px solid #d9cdd0;border-radius:12px;padding:13px 14px;background:#fff;color:var(--ink)}
+textarea{min-height:100px;resize:vertical}
+.discussion input{margin:4px 0 10px;padding:10px 12px}
+.receipt{max-width:690px;margin:0 auto;background:#fff;border:2px solid var(--ink);box-shadow:8px 8px 0 var(--pink);padding:28px}
+.receipt-head{text-align:center;border-bottom:2px dashed var(--line);padding-bottom:20px}.receipt-head h2{font-size:2rem;margin:10px 0}
+.receipt-row{display:flex;justify-content:space-between;gap:15px;padding:12px 0;border-bottom:1px dashed var(--line);align-items:flex-start}
+.receipt-row span{color:var(--muted);font-size:.9rem}.receipt-row b{text-align:right;max-width:60%}
+.receipt-costs{padding:16px 0;border-bottom:1px dashed var(--line)}
+.receipt-cost{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:9px 0;font-size:.92rem}
+.receipt-cost .bar{height:7px;background:#f3e5e8;border-radius:99px;overflow:hidden;flex:1;max-width:140px}
+.receipt-cost .bar i{display:block;height:100%;background:var(--pink)}
+.commitment{background:#fff6f8;padding:17px;border-radius:12px;margin-top:17px;line-height:1.6}
+.receipt-footer{text-align:center;font-size:.75rem;letter-spacing:.1em;font-weight:900;margin-top:22px}
+.feedback{max-width:690px;margin:28px auto 0;background:#f3f0ff;border:1px solid #d9d0f7;border-radius:18px;padding:22px}.feedback h3{margin-top:0}
+.footer{text-align:center;color:var(--muted);font-size:.8rem;margin:38px auto 0;max-width:600px}
+.hidden{display:none!important}
+@media(max-width:650px){
+.topbar{padding:15px 17px}.pill{font-size:.66rem}main{padding:22px 15px 50px}
+.rules{grid-template-columns:1fr}.solution-grid{grid-template-columns:1fr}.solution-option{min-height:auto}
+.deck{grid-template-columns:repeat(3,1fr)}.hero-art{gap:10px;padding:17px}.coin{height:52px;width:52px;font-size:1.1rem}
+.receipt{padding:22px 17px}.cost-row{flex-direction:column;align-items:stretch}.ctl{justify-content:space-between}}
+@media print{body{background:#fff}.topbar,.progress-wrap,.no-print,.footer{display:none!important}.screen{display:none!important}#screen-receipt{display:block!important}.panel-intro{display:none}.receipt{box-shadow:none}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="brand">THE <span>GENDER</span> PRICE TAG</div><div class="pill">A GENDER &amp; SOCIETY INTERACTIVE GAME</div></header>
+<main>
+<div class="progress-wrap hidden" id="pw"><div class="progress-meta"><span>YOUR JOURNEY</span><span id="pc"></span></div><div class="progress-track"><div class="progress-fill" id="pf"></div></div></div>
 
+
+<section class="screen active" id="screen-home"><div class="hero">
+<span class="eyebrow">A SOCIAL EXPERIMENT</span>
+<h1>THE COST<br>OF BEING <span class="pink">YOU.</span></h1>
+<p class="lead">How much does society charge you for being yourself? Explore a real-life situation, decide which unfair costs matter most, and choose what should change.</p>
+<div class="hero-art" aria-label="Five tokens represent the social costs explored in the game"><div class="coin">1</div><div class="coin">2</div><div class="coin">3</div><div class="coin">4</div><div class="coin">5</div><div class="equals">=</div><strong>YOUR 5 TOKENS</strong></div>
+<div class="panel" style="text-align:left"><div class="kicker">HOW TO PLAY</div>
+<div class="rules"><div class="rule"><b>01 / DRAW</b><span>Get one scenario card about gender expectations.</span></div><div class="rule"><b>02 / ALLOCATE</b><span>Spend all five tokens across four social costs.</span></div><div class="rule"><b>03 / CHANGE</b><span>Choose a response and receive your personal receipt.</span></div></div>
+<p class="small muted">There are no right or wrong token distributions. This game is about noticing how gender stereotypes can affect people’s choices and opportunities.</p>
+<div class="center"><button class="btn pink" id="startBtn">ENTER THE MARKETPLACE →</button></div></div></div></section>
+
+
+<section class="screen" id="screen-scenario"><div class="card-stage">
+<div class="kicker">ROUND 01 · DRAW A SCENARIO</div>
+<div id="deckView"><h2>Pick a card.</h2><p class="muted">Five situation cards, face down. Choose one at random and see what society is charging.</p><div class="deck" id="deck"></div></div>
+<div id="cardView" class="hidden"><h2>Your situation is...</h2><p class="muted">Read the situation. What gender expectation is at work, and what might it cost this person?</p>
+<div class="scenario-card"><span class="tag" id="sTag"></span><h2 id="sTitle"></h2><p class="story" id="sStory"></p></div>
+<div class="discussion"><h3>THINK ABOUT IT</h3><p id="sPrompt"></p>
+<label class="field-label small" for="stIn">The stereotype I see (optional)</label><input type="text" id="stIn" maxlength="150">
+<label class="field-label small" for="csIn">The cost they might pay (optional)</label><input type="text" id="csIn" maxlength="150"></div>
+<div class="row-actions"><button class="btn secondary" id="redrawBtn">↻ Return card &amp; reshuffle</button><button class="btn pink" id="toCostsBtn">IDENTIFY THE COST →</button></div></div>
+</div></section>
+
+
+<section class="screen" id="screen-costs"><div class="panel">
+<div class="kicker">ROUND 02 · PAY THE SOCIAL COST</div><h2>Where does the cost land?</h2>
+<p class="muted">You have <b>5 fictional tokens</b>. Use + and − to decide how strongly each cost affects the person in your scenario. Put all five on one cost or spread them out. You must place all five to continue.</p>
+<div class="cost-list" id="costList"></div>
+<div class="total-line"><span>TOKENS ALLOCATED</span><strong id="tt">0 / 5</strong></div>
+<p class="small muted" id="th" aria-live="polite"></p>
+<div class="row-actions"><button class="btn secondary" id="bk1">← Back to scenario</button><button class="btn pink" id="toSolBtn" disabled>CHOOSE A SOLUTION →</button></div></div></section>
+
+
+<section class="screen" id="screen-solution"><div class="panel">
+<div class="kicker">ROUND 03 · MAKE A CHANGE</div><h2>What should change?</h2>
+<p class="muted">Who is paying this cost, and what could make it fairer? Choose the response you believe would help most.</p>
+<div class="solution-grid" id="solGrid"></div>
+<label class="field-label" for="whyIn">Why did you choose this response? <span class="muted">(optional)</span></label>
+<textarea id="whyIn" placeholder="I chose this because..."></textarea>
+<div class="row-actions"><button class="btn secondary" id="bk2">← Back to tokens</button><button class="btn pink" id="toRecBtn" disabled>GET MY RECEIPT →</button></div></div></section>
+
+
+<section class="screen" id="screen-receipt">
+<div class="panel-intro center"><div class="kicker">ROUND 04 · YOUR TAKEAWAY</div><h2>Your receipt is ready.</h2><p class="muted">A small record of the social cost you noticed and the change you want to see.</p></div>
+<div class="receipt"><div class="receipt-head"><div class="kicker">THE GENDER PRICE TAG</div><h2>YOUR SOCIAL COST RECEIPT</h2><div class="small muted" id="rDate"></div></div>
+<div class="receipt-row"><span>SCENARIO</span><b id="rScn"></b></div>
+<div class="receipt-row hidden" id="rStRow"><span>STEREOTYPE I SPOTTED</span><b id="rSt"></b></div>
+<div class="receipt-row"><span>SELECTED RESPONSE</span><b id="rSol"></b></div>
+<div class="receipt-costs"><b>YOUR FIVE TOKENS</b><div id="rCosts"></div></div>
+<div class="receipt-row"><span>YOUR REASON</span><b id="rWhy"></b></div>
+<div class="commitment"><b>ONE UNFAIR COST I WANT SOCIETY TO STOP CHARGING IS...</b><br><span id="rCom">—</span></div>
+<div class="receipt-footer">PEOPLE ARE NOT PRICE TAGS.</div></div>
+<div class="panel no-print" style="margin-top:25px"><label class="field-label" for="comIn">Finish the sentence in your own words</label>
+<textarea id="comIn" placeholder="One unfair cost I want society to stop charging is..." maxlength="400"></textarea>
+<div class="row-actions"><button class="btn pink" id="printBtn">PRINT / SAVE AS PDF</button><button class="btn secondary" id="restartBtn">PLAY AGAIN ↻</button></div></div>
+<div class="feedback no-print"><h3>OPTIONAL · SHARE YOUR REFLECTION</h3><p class="small">Want to share feedback about the activity? Open the Google Forms questionnaire here. Participation is optional.</p>
+<div class="row-actions"><button class="btn secondary" id="formBtn">OPEN FEEDBACK FORM ↗</button></div></div>
+</section>
+<div class="footer">Brought to you by CpE 2-A for GE-ELECT 2</div>
+</main>
+<script>
+var SC=[
+{tag:"THE CAREER PRICE TAG",title:"The Career Price Tag",text:"A woman applies for an engineering position, but the interviewer doubts her technical ability because engineering is seen as a man’s field.",w:"she"},
+{tag:"THE EMOTIONAL PRICE TAG",title:"The Emotional Price Tag",text:"A boy feels overwhelmed and starts crying, but his friends tell him to “man up” because boys should always be strong.",w:"he"},
+{tag:"THE LEADERSHIP PRICE TAG",title:"The Leadership Price Tag",text:"A woman leads a group project and makes firm decisions. Her classmates call her bossy, although they praise male classmates for behaving the same way.",w:"she"},
+{tag:"THE RESPONSIBILITY PRICE TAG",title:"The Responsibility Price Tag",text:"In a household, a daughter is expected to do most of the cooking and cleaning while her brother is allowed to focus on his studies and hobbies.",w:"she"},
+{tag:"THE FREEDOM PRICE TAG",title:"The Freedom Price Tag",text:"A boy wants to pursue fashion design, but his family discourages him because they believe it is not a suitable career for men.",w:"he"}];
+var CO=[
+{n:"Judgment",i:"⚖️",d:"Being criticized, mocked, or treated unfairly for going against gender expectations."},
+{n:"Reduced Encouragement",i:"📉",d:"Receiving less support, confidence, or encouragement because of gender stereotypes."},
+{n:"Unequal Expectations",i:"🟰",d:"Being expected to act, perform, or take responsibility differently because of gender."},
+{n:"Missed Opportunities",i:"🚪",d:"Losing access to roles, experiences, or opportunities because of gender-based assumptions."}];
+var SO=[
+{n:"Challenge the Assumption",d:"Question the stereotype and speak up when an unfair assumption is made."},
+{n:"Share the Responsibility",d:"Divide care work, emotional labor, and responsibilities more fairly."},
+{n:"Expand the Opportunity",d:"Make space for people to explore roles and choices without gender-based limits."},
+{n:"Change the Rule",d:"Change a policy, practice, or expectation that creates unequal treatment."}];
+var SCR=["home","scenario","costs","solution","receipt"],cur=null,al=[0,0,0,0],sel=-1;
+function $(id){return document.getElementById(id)}
+function show(n){
+ SCR.forEach(function(s){$("screen-"+s).classList.toggle("active",s===n)});
+ var k=SCR.indexOf(n);$("pw").classList.toggle("hidden",n==="home");
+ $("pc").textContent="STEP "+k+" OF 4";$("pf").style.width=(k/4*100)+"%";window.scrollTo(0,0);
+}
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
+function deck(){
+ cur=null;$("deckView").classList.remove("hidden");$("cardView").classList.add("hidden");
+ $("stIn").value="";$("csIn").value="";
+ $("deck").innerHTML=shuffle([0,1,2,3,4]).map(function(idx,p){return '<button class="back" data-i="'+idx+'" aria-label="Face-down card '+(p+1)+'">?</button>'}).join("");
+ $("deck").querySelectorAll("button").forEach(function(b){b.onclick=function(){reveal(+b.dataset.i)}});
+}
+function reveal(i){
+ cur=SC[i];$("sTag").textContent=cur.tag;$("sTitle").textContent=cur.title;$("sStory").textContent=cur.text;
+ $("sPrompt").textContent="What gender stereotype is present? What social cost might "+cur.w+" pay?";
+ $("deckView").classList.add("hidden");$("cardView").classList.remove("hidden");window.scrollTo(0,0);
+}
+function total(){return al.reduce(function(a,b){return a+b},0)}
+function costs(){
+ var t=total();
+ $("costList").innerHTML=CO.map(function(c,i){
+  var dots="";for(var j=0;j<al[i];j++)dots+='<span class="mini-token"></span>';
+  return '<div class="cost-row'+(al[i]?" has":"")+'"><div><div class="cost-title"><i>'+c.i+'</i>'+c.n+'</div><div class="cost-description">'+c.d+'</div><div class="token-dots">'+dots+'</div></div>'+
+  '<div class="ctl"><button class="token-btn" data-i="'+i+'" data-c="-1" aria-label="Remove token from '+c.n+'"'+(al[i]?"":" disabled")+'>−</button><div class="count">'+al[i]+'</div><button class="token-btn" data-i="'+i+'" data-c="1" aria-label="Add token to '+c.n+'"'+(t<5?"":" disabled")+'>+</button></div></div>';
+ }).join("");
+ $("costList").querySelectorAll("button").forEach(function(b){b.onclick=function(){al[+b.dataset.i]+=+b.dataset.c;costs()}});
+ $("tt").textContent=t+" / 5";
+ $("th").textContent=t<5?"You have "+(5-t)+" token"+(5-t===1?"":"s")+" left to place.":"All five tokens are allocated. Ready to continue!";
+ $("toSolBtn").disabled=t!==5;
+}
+function sols(){
+ $("solGrid").innerHTML=SO.map(function(s,i){return '<button type="button" class="solution-option'+(sel===i?" selected":"")+'" data-i="'+i+'"><span class="num">RESPONSE 0'+(i+1)+'</span><b>'+s.n+'</b><span>'+s.d+'</span></button>'}).join("");
+ $("solGrid").querySelectorAll("button").forEach(function(b){b.onclick=function(){sel=+b.dataset.i;sols()}});
+ $("toRecBtn").disabled=sel<0;
+}
+function receipt(){
+ $("rDate").textContent=new Date().toLocaleString(undefined,{year:"numeric",month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"});
+ $("rScn").textContent=cur.title;$("rSol").textContent=SO[sel].n;
+ var st=$("stIn").value.trim();$("rStRow").classList.toggle("hidden",!st);$("rSt").textContent=st;
+ $("rWhy").textContent=$("whyIn").value.trim()||"No reason added";
+ $("rCosts").innerHTML=CO.map(function(c,i){return '<div class="receipt-cost"><span style="min-width:135px">'+c.n+'</span><span class="bar"><i style="width:'+(al[i]/5*100)+'%"></i></span><b>'+al[i]+' / 5</b></div>'}).join("");
+ $("comIn").value="";com();
+}
+function com(){$("rCom").textContent=$("comIn").value.trim()||"Add your reflection below."}
+$("startBtn").onclick=function(){deck();show("scenario")};
+$("redrawBtn").onclick=deck;
+$("toCostsBtn").onclick=function(){al=[0,0,0,0];costs();show("costs")};
+$("bk1").onclick=function(){show("scenario")};
+$("toSolBtn").onclick=function(){sel=-1;$("whyIn").value="";sols();show("solution")};
+$("bk2").onclick=function(){show("costs")};
+$("toRecBtn").onclick=function(){receipt();show("receipt")};
+$("comIn").oninput=com;
+$("printBtn").onclick=function(){com();window.print()};
+$("restartBtn").onclick=function(){cur=null;al=[0,0,0,0];sel=-1;show("home")};
+$("formBtn").onclick=function(){
+ var raw="https://docs.google.com/forms/d/e/1FAIpQLSfejH50w4U-FJHGgx7CBzVwS6X7XX4aZCmn4mqQr2X9VpKSqA/viewform";
+ if(!raw){alert("Please paste your Google Forms link first.");return}
+ try{var u=new URL(raw);if(u.protocol!=="https:"){alert("Please use a secure https:// link.");return}window.open(u.href,"_blank","noopener,noreferrer")}
+ catch(e){alert("That link doesn’t look valid. Please paste the full URL.")}
+};
+</script>
+</body>
+</html>
